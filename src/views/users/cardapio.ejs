@@ -1,0 +1,45 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbar.ejs') %>
+
+<div id='cardapio' class="container">
+    <hr>
+    <h2>Cardápio</h2>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product =>{ %>
+                <tr>
+                    <th><%= product.idProduct %></th>
+                    <th><%= product.name %></th>
+                    <th><%= product.price %></th>
+                    <th><%= product.description %></th>
+                    <th><%= product.category %></th>
+                    <th><button id="adicionarItem">Adicionar item</button></th>
+                </tr>
+                
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<script>
+    var campo = document.querySelector("input")
+    var but = document.querySelector("button")
+    var medicamentos = [];
+
+    but.onclick = function(){
+    medicamentos.push(campo.value);
+    console.log(medicamentos);
+}
+</script>
+
+<%- include ('../partials/footer.ejs') %>

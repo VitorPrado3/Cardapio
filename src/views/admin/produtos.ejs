@@ -1,0 +1,55 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/navbaradmin.ejs') %>
+
+<div class="container">
+    <hr>
+    <h2>Produtos</h2>
+    <a class='btn btn-success' href='/admin/new'>Inserir novo produto</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product =>{ %>
+                <tr>
+                    <th><%= product.idProduct %></th>
+                    <th><%= product.name %></th>
+                    <th><%= product.price %></th>
+                    <th><%= product.description %></th>
+                    <th><%= product.category %></th>
+                    <th>
+                        <form method='POST' action='/produto/edit' style='display: inline'>
+                        <input type="hidden" name='id' value='<%= product.idProduct %>'>
+                        <a href='/produto/edit/<%= product.idProduct %>' class='btn btn-warning' >Editar</a>
+                        </form>
+
+                        <form method='POST' action='/produto/delete' style='display: inline' onsubmit='confirmarDelecao(event, this)'>
+                            <input type="hidden" name='id' value='<%= product.idProduct %>'>
+                        <button class='btn btn-danger'>Deletar</button>
+                        </form>
+                    </th>
+                </tr>
+                
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include ('../partials/footer.ejs') %>
+
+<script>
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        var decision = confirm('Deseja deletar o produto?');
+        if (decision){
+            form.submit();
+        }
+    }
+</script>

@@ -1,0 +1,32 @@
+<%- include ('partials/header.ejs') %>
+
+<body>
+
+<div class="container p-5">
+	<div class="row">
+         <div class="col-10 col-md-8 col-lg-6 mx-auto">
+			    <div class="card">
+				<div class="card-header">
+    <h5>Login</h5>
+  </div>
+				    <div class="card-body">
+                    <form method="POST" action="/authenticateadm">
+					  <div class="form-group">
+						<label for="email">Endereço de email</label>
+						<input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Digite seu email">
+					  </div>
+					  <div class="form-group">
+						<label for="password">Senha</label>
+						<input type="password" class="form-control" name="password" placeholder="Digite sua senha">
+						<small id="passHelp" class="form-text text-muted text-right text-warning"><a class="text-warning" href="#">Esqueceu a sua senha?</a></small>
+					  </div>
+                       <button type="submit" class="btn btn-success btn-block">Login</button><br>
+                    </form>
+                    <a class='btn btn-success btn-block' href='/login'>Voltar</a>
+					</div>
+				</div>
+			</div> 
+	</div>
+</div>
+</body>
+<%- include ('partials/footer.ejs') %>
